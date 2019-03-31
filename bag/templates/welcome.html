@@ -1,1 +1,45 @@
-<h1>hhvdf</h1>
+
+{%extends 'base.html' %}
+{% load static %}
+{% load bootstrap3 %}
+{% block content %}
+
+<h1 class="header"> Mish_Bosslady</h1>
+<br>
+<br>
+
+{% for pic in pics%}
+
+<div class="content container">
+<div class="row">
+  <div class="col-md-12">
+  <div class="card" style="max-width: 180rem; border-style:solid;">
+   <div class="card-body">
+          <h1 class="ml-2" style="display:inline; white-space:nowrap; font-family:cursive; font-size:25px;"> {{pic.article}} </h1>
+          <br>
+          <br>
+          <img src="{{pic.image.url}}" alt="" style="height:140px;width:140px; border-radius:4px;padding:5px; width: 200px; display:inline;">
+          <br>
+          <br>
+           <h2 style="font-family:cursive;"> {{pic.snippet}}
+           <br>
+           <br>
+           <a href="{%url 'article' pic.id %}" > <button class="btn btn-outline-success my-2 my-sm-0" type="button" name="button" >READ MORE</button> </h2> </button> </a>
+
+          <br>
+          <br>
+          <p class="date"> {{pic.date}} </p>
+        </div>
+      </div>
+
+</div>
+</div>
+<br>
+
+<br>
+
+{% endfor %}
+
+
+
+{% endblock  %}
