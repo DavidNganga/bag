@@ -1,0 +1,39 @@
+{%extends 'base.html' %}
+{% load static %}
+{% load bootstrap3 %}
+{% block content %}
+{% for pic in pics %}
+<div class="content container">
+<div class="row">
+  <div class="col-md-12">
+  <div class="card" style="max-width: 180rem;">
+
+   <div class="card-body">
+<h1 class="ml-2" style="display:inline; white-space:nowrap;font-family:cursive;   font-size:25px;"> {{pic.article}} </h1>
+<br>
+          <img src="{{pic.image.url}}" alt="" style="height:140px;width:140px; border-radius:4px;padding:5px; width: 200px; display:inline;">
+          <br>
+          <br>
+          <h2 style="font-family:cursive;"> {{pic.post }} </h2>
+          <br>
+          <br>
+          <p class="date"> {{pic.date}}</p>
+          <h2>Comments</h2>
+          {{comments.count}} Comment {{comments|pluralize}}
+          {%for comment in comments %}
+          <h3 style= "font-family:cursive;">{{comment.author}}:  {{comment.content }}</h3>
+          {% endfor %}
+          <br>
+          <br>
+<!-- <form  method="post">
+  {% csrf_token %}
+  {{comment_form.as_p }}
+  <input class="btn btn-outline-success" type="submit" value="submit">
+</form> -->
+<a href="{%url 'comment' pic.id%}"><button class="btn btn-outline-success my-2 my-sm-0" type="button" name="button" >COMMENT</button> </h2> </button> </a>
+        </div>
+      </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock  %}
