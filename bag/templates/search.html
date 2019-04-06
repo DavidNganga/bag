@@ -5,16 +5,23 @@
 
 <div class="container">
   <div class="row">
-    {% if articles%}
-      <h2>Found {{ articles|length }} of searched term {{message}}</h2>
+    {% if blogs%}
+      <h2>Found {{ blogs|length }} of searched term {{message}}</h2>
     {% else %}
       <h2> Found 0 articles for the search term {{message}}</h2>
     {% endif %}
   </div>
 
 
-{% if articles %}
-{% for article in articles %}
+{% if blogs %}
+{% for blog in blogs %}
+
+<div class="col-sm-6 col-md-3">
+
+      <h1>{{blog.article}}</h1>
+           <h3>{{blog.post}}</h3>
+      </div>
+
 
 {% endfor %}
 {% endif%}
