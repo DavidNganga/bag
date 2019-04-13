@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from .forms import PostForm
-from .models import Blog
+from .models import Blog,Comment
 
 # Create your views here.
 def welcome(request):
-
-    return render(request, 'welcome.html')
+    pics=Blog.objects.all().order_by('-date')
+    return render(request, 'welcome.html',{"pics":pics})
 
 def post(request):
     form= PostForm(request.POST or None, request.FILES or None)
