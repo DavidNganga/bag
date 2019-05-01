@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .forms import PostForm
+from django.shortcuts import render,redirect
+from .forms import PostForm, CommentForm
 from .models import Blog,Comment
 
 # Create your views here.
@@ -46,7 +46,7 @@ def post_comment(request, blog_id):
 
                 comment.blog = current_blog
                 comment.save()
-            return redirect('/')
+            return redirect('welcome')
     else:
             form = CommentForm()
     return render(request, 'comment.html', {"form": form, "current_blog":current_blog,"id":blog_id})
@@ -59,5 +59,7 @@ def article(request, blog_id):
      pics =Blog.objects.filter(id = blog_id)
 
      comments = Comment.objects.all().filter(article = id)
+
+
 
      return render(request, 'article.html', {"pics":pics,"comments":comments, id:blog_id})
