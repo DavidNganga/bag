@@ -57,9 +57,9 @@ def article(request, blog_id):
      id=blog_id
      print(blog_id)
      pics =Blog.objects.filter(id = blog_id)
-
      comments = Comment.objects.all().filter(article = id)
 
 
 
-     return render(request, 'article.html', {"pics":pics,"comments":comments, id:blog_id})
+
+     return render(request, 'article.html', { "pics":pics,"comments":comments, id:blog_id})
